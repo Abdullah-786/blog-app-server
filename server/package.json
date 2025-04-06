@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "backend for blog management",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-  "dev": "nodemon index.js"
-},
+    "dev": "nodemon index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Abdullah-786/blog-app-server.git"
@@ -22,6 +23,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.15.0",
     "mongoose": "^8.12.2"
   },
   "devDependencies": {
