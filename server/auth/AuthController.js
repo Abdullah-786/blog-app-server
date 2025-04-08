@@ -1,5 +1,6 @@
 import { GENDER } from "../constants.js";
 import { saveUser} from "./AuthServices.js";
+import { authenticateUser } from './AuthServices.js';
 
 
 const EMAIL_REGEXP = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -49,9 +50,14 @@ export async function signupController(req, resp){
 
 }
 
-export function loginController(req, resp){
+export  async function loginController(req, resp){
     const {email, password} = req.body;
     if(!validateEmail(email) || !validatePassword(password)){
         resp.status(400).json({message: "invalid credentials"}); // bad request
     }
+
+    const result = await authenticateUser(req.body);
+    const statusCode = result.status;
+    delete result.status;
+    resp.status(statusCode).json({ ...result });
 }
